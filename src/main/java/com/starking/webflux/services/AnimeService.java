@@ -23,7 +23,6 @@ public class AnimeService {
 	
 	public Mono<Animes> findById(Integer id) {
 		return this.animeRepository.findById(id)
-				.switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "Anime not found")))
-				.log();
+				.switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "Anime not found")));
 	}
 }
