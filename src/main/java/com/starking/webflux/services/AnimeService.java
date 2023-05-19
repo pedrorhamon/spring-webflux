@@ -7,6 +7,7 @@ import com.starking.webflux.repositories.AnimeRepository;
 
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
@@ -16,5 +17,9 @@ public class AnimeService {
 
 	public Flux<Animes> findAll() {
 		return this.animeRepository.findAll();
+	}
+	
+	public Mono<Animes> findById(Integer id) {
+		return this.animeRepository.findById(id);
 	}
 }

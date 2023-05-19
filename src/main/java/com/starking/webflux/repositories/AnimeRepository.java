@@ -4,6 +4,9 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
 import com.starking.webflux.domain.Animes;
 
-public interface AnimeRepository extends ReactiveCrudRepository<Animes, Integer>{
+import reactor.core.publisher.Mono;
 
+public interface AnimeRepository extends ReactiveCrudRepository<Animes, Integer>{
+	
+	Mono<Animes> findById(Integer id);
 }
