@@ -12,13 +12,13 @@ import org.springframework.web.server.ResponseStatusException;
  * @author pedroRhamon
  */
 @Component
-public class CustomAttributes extends DefaultErrorAttributes{
-	
+public class CustomAttributes extends DefaultErrorAttributes {
+
 	@Override
 	public Map<String, Object> getErrorAttributes(ServerRequest request, ErrorAttributeOptions options) {
-		Map<String, Object> errorAttributes = getErrorAttributes(request, options);
+		Map<String, Object> errorAttributes = super.getErrorAttributes(request, options);
 		Throwable throwable = getError(request);
-		if(throwable instanceof ResponseStatusException) {
+		if (throwable instanceof ResponseStatusException) {
 			ResponseStatusException ex = (ResponseStatusException) throwable;
 			errorAttributes.put("message", ex.getMessage());
 			errorAttributes.put("developeMessae", "A ResponseStatusException Happened");

@@ -9,6 +9,7 @@ import org.springframework.data.relational.core.mapping.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
@@ -18,10 +19,10 @@ import lombok.With;
 @Builder
 @With
 @Table("animes")
+@EqualsAndHashCode
 public class Animes {
 	
 	@Id
-	@NotNull
 	private Integer id;
 	
 	@NotEmpty(message = "The name of this anime cannot be empty")
