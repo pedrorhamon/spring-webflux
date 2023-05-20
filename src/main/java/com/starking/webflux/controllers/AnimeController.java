@@ -28,7 +28,7 @@ public class AnimeController {
 	
 	@GetMapping(path = "/{id}")
 	public Mono<Animes> findById(@PathVariable Integer id) {
-		log.debug("Está na lista de Animes");
+		log.info("Está na lista de Animes");
 		return this.AnimeService.findById(id);
 	}
 }
