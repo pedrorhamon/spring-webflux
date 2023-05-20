@@ -1,4 +1,4 @@
-package com.starking.webflux.execeptions;
+package com.starking.webflux.exceptions;
 
 import java.util.Map;
 import java.util.Optional;
