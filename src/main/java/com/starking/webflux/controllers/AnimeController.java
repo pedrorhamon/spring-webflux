@@ -3,6 +3,7 @@ package com.starking.webflux.controllers;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,5 +50,11 @@ public class AnimeController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public Mono<Void> update(@PathVariable Integer id, @Valid @RequestBody Animes anime) {
 		return this.animeService.update(anime);
+	}
+	
+	@DeleteMapping(path = "/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public Mono<Void> delete(@PathVariable Integer id) {
+		return this.animeService.delete(id);
 	}
 }
