@@ -32,8 +32,7 @@ public class AnimeService {
 	
 	public Mono<Void> update(Animes anime) {
 		return this.animeRepository.findById(anime.getId())
-				.map(animeAtualiza -> anime.withId(animeAtualiza.getId()))
 				.flatMap(animeRepository::save)
-				.thenEmpty(Mono.empty());
+				.then();
 	}
 }
