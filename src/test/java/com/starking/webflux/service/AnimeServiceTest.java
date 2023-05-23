@@ -61,7 +61,7 @@ public class AnimeServiceTest {
 	
 	@Test
     public void monoSubscriber() {
-        String name = "William Suane";
+        String name = "Pedro Rhamon";
         Mono<String> mono = Mono.just(name)
             .log();
 
@@ -74,7 +74,7 @@ public class AnimeServiceTest {
 
     @Test
     public void monoSubscriberConsumer() {
-        String name = "William Suane";
+        String name = "Pedro Rhamon";
         Mono<String> mono = Mono.just(name)
             .log();
 
@@ -88,7 +88,7 @@ public class AnimeServiceTest {
 
     @Test
     public void monoSubscriberConsumerError() {
-        String name = "William Suane";
+        String name = "Pedro Rhamon";
         Mono<String> mono = Mono.just(name)
             .map(s -> {
                 throw new RuntimeException("Testing mono with error");
@@ -106,7 +106,7 @@ public class AnimeServiceTest {
 
     @Test
     public void monoSubscriberConsumerComplete() {
-        String name = "William Suane";
+        String name = "Pedro Rhamon";
         Mono<String> mono = Mono.just(name)
             .log()
             .map(String::toUpperCase);
@@ -124,7 +124,7 @@ public class AnimeServiceTest {
 
     @Test
     public void monoSubscriberConsumerSubscription() {
-        String name = "William Suane";
+        String name = "Pedro Rhamon";
         Mono<String> mono = Mono.just(name)
             .log()
             .map(String::toUpperCase);
@@ -143,7 +143,7 @@ public class AnimeServiceTest {
 
     @Test
     public void monoDoOnMethods() {
-        String name = "William Suane";
+        String name = "Pedro Rhamon";
         Mono<Object> mono = Mono.just(name)
             .log()
             .map(String::toUpperCase)
@@ -174,7 +174,7 @@ public class AnimeServiceTest {
 
     @Test
     public void monoOnErrorResume() {
-        String name = "William Suane";
+        String name = "Pedro Rhamon";
         Mono<Object> error = Mono.error(new IllegalArgumentException("Illegal argument exception"))
             .onErrorResume(s -> {
                 log.info("Inside On Error Resume");
@@ -190,7 +190,7 @@ public class AnimeServiceTest {
 
     @Test
     public void monoOnErrorReturn() {
-        String name = "William Suane";
+        String name = "Pedro Rhamon";
         Mono<Object> error = Mono.error(new IllegalArgumentException("Illegal argument exception"))
             .onErrorReturn("EMPTY")
             .onErrorResume(s -> {
