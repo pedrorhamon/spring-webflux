@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.starking.webflux.domain.Animes;
@@ -44,6 +45,7 @@ public class AnimeService {
 				.flatMap(animeRepository::delete);
 	}
 
+	@Transactional
 	public Flux<Animes> saveBatch(List<Animes> animes) {
 		return this.animeRepository.saveAll(animes)
 				.doOnNext(this::thrownResponseStatusExceptionWhenEmptyName);
