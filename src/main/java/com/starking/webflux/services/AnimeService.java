@@ -1,5 +1,7 @@
 package com.starking.webflux.services;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -7,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.starking.webflux.domain.Animes;
 import com.starking.webflux.repositories.AnimeRepository;
 
+import io.netty.util.internal.StringUtil;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -39,5 +42,16 @@ public class AnimeService {
 	public Mono<Void> delete(Integer id) {
 		return findById(id)
 				.flatMap(animeRepository::delete);
+	}
+
+	public Flux<Animes> saveBatch(List<Animes> animes) {
+		return this.animeRepository.saveAll(animes)
+				.doOnNext(this::thrownResponseStatusExceptionWhenEmptyName);
+	}
+	
+	private void thrownResponseStatusExceptionWhenEmptyName(Animes anime) {
+		if(StringUtil.isNullOrEmpty(anime.getName())) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid name");
+		}
 	}
 }

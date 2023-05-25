@@ -1,5 +1,7 @@
 package com.starking.webflux.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -44,6 +46,12 @@ public class AnimeController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Mono<Animes> save(@Valid @RequestBody Animes anime) {
 		return this.animeService.save(anime);
+	}
+	
+	@PostMapping(path = "batch")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Flux<Animes> saveBatch(@RequestBody List<Animes> anime) {
+		return this.animeService.saveBatch(anime);
 	}
 	
 	@PutMapping(path = "/{id}")
