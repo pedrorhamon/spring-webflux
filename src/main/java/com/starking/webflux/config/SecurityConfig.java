@@ -25,6 +25,7 @@ public class SecurityConfig {
 				.authorizeExchange()
 				.pathMatchers(HttpMethod.POST, "animes/**").hasRole("ADMIN")
 				.pathMatchers(HttpMethod.GET, "animes/**").hasRole("USER")
+				.pathMatchers("/webjars/**","/v3/api-docs/**","swagger-ui.html").permitAll()
 				.anyExchange().authenticated()
 				.and()
 				.formLogin()
