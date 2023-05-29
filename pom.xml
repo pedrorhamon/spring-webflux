@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<blockhound.version>1.0.8.RELEASE</blockhound.version>
+		<springdoc-openapi-webflux.version>1.4.0</springdoc-openapi-webflux.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -27,6 +28,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-r2dbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-webflux-ui</artifactId>
+			<version>${springdoc-openapi-webflux.version}</version>
 		</dependency>
 		
 		<dependency>
